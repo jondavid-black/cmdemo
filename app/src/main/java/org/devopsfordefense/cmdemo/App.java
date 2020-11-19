@@ -12,5 +12,9 @@ public class App {
         NumberGenerator numGen = new NumberGenerator();
         List<Double> nums = numGen.generate();
         System.out.println("Generated " + nums.size() + " numbers.");
+
+        NumberAggregator numAgg = new NumberAggregator();
+        double value = numAgg.aggregate(nums);
+        System.out.println("Aggregated value is " + value);
     }
 }
