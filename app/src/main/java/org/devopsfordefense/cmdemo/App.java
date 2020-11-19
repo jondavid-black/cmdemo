@@ -6,6 +6,11 @@ package org.devopsfordefense.cmdemo;
 import java.util.List;
 
 public class App {
+
+    private static final String AGG_STRATEGY_SUM = "SUM";
+    private static final String AGG_STRATEGY_MEAN = "MEAN";
+
+    private static final String AGG_STRATEGY_TOGGLE = AGG_STRATEGY_MEAN;
     
     public static void main(String[] args) {
 
@@ -13,7 +18,13 @@ public class App {
         List<Double> nums = numGen.generate();
         System.out.println("Generated " + nums.size() + " numbers.");
 
-        NumberAggregator numAgg = new NumberAggregator();
+        NumberAggregator numAgg = null;
+        
+        if(AGG_STRATEGY_TOGGLE.equals(AGG_STRATEGY_SUM)) {
+            numAgg = new NumberAggregatorSum();
+        } else if (AGG_STRATEGY_TOGGLE.equals(AGG_STRATEGY_MEAN)) {
+            numAgg = new NumberAggregatorMean();
+        }
         double value = numAgg.aggregate(nums);
         System.out.println("Aggregated value is " + value);
     }
