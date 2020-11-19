@@ -40,3 +40,13 @@ tasks.named('test') {
     // Use junit platform for unit tests.
     useJUnitPlatform()
 }
+
+distZip {
+    into(project.name) {
+        from '.'
+        include 'config/*'
+        include 'build/libs/*'
+        include 'runWithMean.bat'
+        include 'runWithSum.bat'
+    }
+}
