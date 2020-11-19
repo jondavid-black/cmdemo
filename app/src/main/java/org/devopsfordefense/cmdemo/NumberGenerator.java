@@ -17,7 +17,7 @@ public class NumberGenerator {
 
         List<Double> retVal = new LinkedList<Double>();
 
-        for (int i = 0; i<100; i++) {
+        for (int i = 0; i<1500; i++) {
             retVal.add(norm.sample());
         }
 
