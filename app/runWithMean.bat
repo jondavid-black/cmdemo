@@ -1,0 +1,1 @@
+./bin/app.bat ./config/config-mean.prop

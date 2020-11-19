@@ -3,16 +3,21 @@
  */
 package org.devopsfordefense.cmdemo;
 
+import java.io.FileInputStream;
 import java.util.List;
+import java.util.Properties;
 
 public class App {
 
     private static final String AGG_STRATEGY_SUM = "SUM";
     private static final String AGG_STRATEGY_MEAN = "MEAN";
 
-    private static final String AGG_STRATEGY_TOGGLE = AGG_STRATEGY_MEAN;
+    private static final String AGG_STRATEGY_TOGGLE = "AGG_STRATEGY";
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+
+        Properties config = new Properties();
+        config.load(new FileInputStream(args[0]));
 
         NumberGenerator numGen = new NumberGenerator();
         List<Double> nums = numGen.generate();
@@ -20,9 +25,9 @@ public class App {
 
         NumberAggregator numAgg = null;
         
-        if(AGG_STRATEGY_TOGGLE.equals(AGG_STRATEGY_SUM)) {
+        if(AGG_STRATEGY_SUM.equals(config.getProperty(AGG_STRATEGY_TOGGLE))) {
             numAgg = new NumberAggregatorSum();
-        } else if (AGG_STRATEGY_TOGGLE.equals(AGG_STRATEGY_MEAN)) {
+        } else if(AGG_STRATEGY_MEAN.equals(config.getProperty(AGG_STRATEGY_TOGGLE))) {
             numAgg = new NumberAggregatorMean();
         }
         double value = numAgg.aggregate(nums);
