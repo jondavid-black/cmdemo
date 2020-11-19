@@ -3,12 +3,14 @@
  */
 package org.devopsfordefense.cmdemo;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import java.util.List;
 
+public class App {
+    
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+        NumberGenerator numGen = new NumberGenerator();
+        List<Double> nums = numGen.generate();
+        System.out.println("Generated " + nums.size() + " numbers.");
     }
 }
