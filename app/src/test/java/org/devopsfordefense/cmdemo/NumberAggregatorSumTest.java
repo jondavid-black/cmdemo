@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class NumberAggregatorTest {
-    @Test void numbersAreAggregated() {
+class NumberAggregatorSumTest {
+    @Test void numbersAreAggregatedAsSum() {
        
-        NumberAggregator na = new NumberAggregator();
+        NumberAggregatorSum na = new NumberAggregatorSum();
 
         List<Double> nums = new ArrayList<>();
         double sum = 0.0;
